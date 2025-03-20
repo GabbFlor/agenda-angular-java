@@ -1,0 +1,54 @@
+header {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #007BFF;
+    width: 100vw;
+    height: 80px;
+}
+
+header img {
+    width: 3.75vw;
+}
+
+header form {
+    position: relative;
+}
+
+header form input {
+    outline: none;
+    border: none;
+    padding: 5px;
+    height: 20px;
+    width: 22.5vw;
+    border-radius: 5px;
+    font-size: 0.75vw;
+}
+
+header form button {
+    position: absolute;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    font-size: 1vw;
+    right: 2%;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+header nav ul {
+    list-style-type: none;
+    display: inline-flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1vw;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
