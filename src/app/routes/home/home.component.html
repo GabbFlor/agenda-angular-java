@@ -20,6 +20,7 @@
                     <td>{{ contato.Telefone }}</td>
                     <td>{{ contato.Obs }}</td>
                     <td class="btn-td">
+                        <a [routerLink]="['/visualizar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn visualizar">Visualizar</a>
                         <a [routerLink]="['/editar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn editar">Editar</a>
                         <button type="button" class="btn deletar">Deletar</button>
                     </td>

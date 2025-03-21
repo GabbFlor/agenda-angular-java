@@ -79,3 +79,15 @@ tfoot {
     border: 2px solid rgb(190, 0, 0);
     color: white;
 }
+
+.visualizar {
+    border: 2px solid rgb(0, 177, 190);
+    color: rgb(0, 155, 155);
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.visualizar:hover {
+    background-color: rgb(0, 145, 155);
+    border: 2px solid rgb(0, 145, 155);
+    color: white;
+}

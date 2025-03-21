@@ -1,0 +1,13 @@
+<main>
+    @if (contatoSelecionado) {
+        <ul>
+            <li>{{ nomeContato }}</li>
+            <li>{{ emailContato }}</li>
+            <li>{{ telefoneContato }}</li>
+            <li>{{ obsContato }}</li>
+        </ul>
+    } @else {
+        <h2 style="color: red;">Usuário não encontrado</h2>
+    }
+    
+</main>
