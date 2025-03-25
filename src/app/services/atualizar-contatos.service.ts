@@ -24,4 +24,11 @@ export class AtualizarContatosService {
   getContatoPorId(id:number) {
     return this.contatos.find(contato => contato.id == id);
   }
+
+  // metodo para adicionar um novo usuário
+  addContato(contato: any) {
+    this.contatos.push(contato);
+
+    // console.log(contato)
+  }
 }

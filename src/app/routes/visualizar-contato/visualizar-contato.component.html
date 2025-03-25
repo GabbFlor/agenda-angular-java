@@ -1,13 +1,42 @@
 <main>
     @if (contatoSelecionado) {
-        <ul>
+        <form class="form-view-contato">
+            <h1>Visualizando contato</h1>
+
+            <div>
+                <label for="nome">Nome:</label>
+                <input type="text" value={{nomeContato}} disabled>
+            </div>
+
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" value={{emailContato}} disabled>
+            </div>
+
+            <div>
+                <label for="tell">Telefone:</label>
+                <input type="tel" value={{telefoneContato}} disabled>
+            </div>
+
+            <div>
+                <label for="obs">Observação:</label>
+                <textarea name="obs" disabled>{{obsContato}}</textarea>
+            </div>
+
+            <div class="div-btns">
+                <button class="btn deletar">Deletar</button>
+                <button class="btn editar">Editar</button>
+            </div>
+        </form>
+    } @else {
+        <h1 style="color: red;">O id: "{{ id }}" não foi encontrado.</h1>
+    }
+
+    <!-- <ul>
             <li>{{ nomeContato }}</li>
             <li>{{ emailContato }}</li>
             <li>{{ telefoneContato }}</li>
             <li>{{ obsContato }}</li>
-        </ul>
-    } @else {
-        <h2 style="color: red;">Usuário não encontrado</h2>
-    }
+        </ul> -->
     
 </main>

@@ -26,7 +26,7 @@ export class VisualizarContatoComponent implements OnInit {
     this.emailContato = '';
     this.telefoneContato = '';
     this.obsContato = '';
-    this.titleService.setTitle("Agenda - Visualizar contato")
+    this.titleService.setTitle("Agenda - Visualizar")
   }
 
   // chamando módulo para executar comandos na montagem do componente
