@@ -1,0 +1,87 @@
+main {
+    width: 100%;
+    height: calc(100vh - 80px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-add-contato {
+    /* background-color: blue; */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-add-contato h1 {
+    font-size: 2vw;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.form-add-contato div:not(.div-btns) {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.form-add-contato div label {
+    font-size: 1.15vw;
+    cursor: text;
+}
+
+.form-add-contato div input, .form-add-contato div textarea {
+    outline: none;
+    height: 25px;
+    width: 19.5vw;
+    font-size: 1vw;
+    cursor: text;
+    border-radius: 5px;
+    border: 1px solid black;
+    padding: 5px;
+}
+
+.form-add-contato div textarea {
+    resize: none;
+    height: 100px;
+}
+
+.div-btns {
+    /* background-color: green; */
+    display: inline-flex;
+    justify-content: space-between;
+}
+
+.btn {
+    outline: none;
+    background-color: transparent;
+    padding: 5px 10px;
+    font-size: 1vw;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.adicionar {
+    border: 2px solid rgb(0, 190, 0);
+    color: rgb(0, 155, 0);
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.adicionar:hover {
+    background-color: rgb(0, 155, 0);
+    border: 2px solid rgb(0, 190, 0);
+    color: white;
+}
+
+.voltar {
+    border: 2px solid rgb(0, 177, 190);
+    color: rgb(0, 155, 155);
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.voltar:hover {
+    background-color: rgb(0, 145, 155);
+    border: 2px solid rgb(0, 145, 155);
+    color: white;
+}

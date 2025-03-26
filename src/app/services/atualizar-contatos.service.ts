@@ -47,4 +47,16 @@ export class AtualizarContatosService {
     // filtra a lista deixando só os contatos que não tem o id igual ao id contato
     this.contatos = this.contatos.filter(contato => contato.id !== idContato)
   }
+
+  // método para editar um contato
+  editarContato(idContato:number, novosDados:any) {
+    let contato = this.contatos.find(contato => contato.id === idContato);
+
+    if(contato) {
+      contato.Nome = novosDados.Nome;
+      contato.Email = novosDados.Email;
+      contato.Telefone = novosDados.Telefone;
+      contato.Obs = novosDados.Obs;
+    }
+  }
 }
