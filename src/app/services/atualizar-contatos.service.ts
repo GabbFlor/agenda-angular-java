@@ -25,10 +25,20 @@ export class AtualizarContatosService {
     return this.contatos.find(contato => contato.id == id);
   }
 
+  // retorna uma unidade a mais do maior id da array "contatos" (trabalha em conjunto com a função "addContato")
+  getIdDoContato(): number {
+    // verifica se a lista ta vazia, se sim, retorna id 1
+    if (this.contatos.length == 0) {
+      return 1;
+    }
+
+    // pega o maior id da lista e retorna ele+1 (semelhante ao AUTO INCREMENT do banco de dados)
+    return Math.max(...this.contatos.map(c => c.id)) + 1;
+  }
+
   // metodo para adicionar um novo usuário
   addContato(contato: any) {
+    contato.id = this.getIdDoContato();
     this.contatos.push(contato);
-
-    // console.log(contato)
   }
 }
