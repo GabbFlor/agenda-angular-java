@@ -41,4 +41,10 @@ export class AtualizarContatosService {
     contato.id = this.getIdDoContato();
     this.contatos.push(contato);
   }
+
+  // método para deletar um contato
+  deleteContato(idContato:number) {
+    // filtra a lista deixando só os contatos que não tem o id igual ao id contato
+    this.contatos = this.contatos.filter(contato => contato.id !== idContato)
+  }
 }

@@ -22,7 +22,7 @@
                     <td class="btn-td">
                         <a [routerLink]="['/visualizar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn visualizar">Visualizar</a>
                         <a [routerLink]="['/editar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn editar">Editar</a>
-                        <button type="button" class="btn deletar">Deletar</button>
+                        <button type="button" class="btn deletar" (click)='deletarContato(contato.id)'>Deletar</button>
                     </td>
                 </tr>
             }

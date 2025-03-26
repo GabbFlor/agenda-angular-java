@@ -24,4 +24,14 @@ export class HomeComponent {
   ) {
     this.titleService.setTitle("Agenda - Home")
   }
+
+  deletarContato(id:number):void{
+    if(confirm("Tem certeza que deseja deletar esse contato?")) {
+      // deleta o contato
+      this.contatosService.deleteContato(id);
+
+      // atualiza os contatos
+      this.contatos = this.contatosService.contatos;
+    }
+  }
 }
