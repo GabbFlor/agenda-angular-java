@@ -1,4 +1,4 @@
-### Back-end - Angular
+# Back-end - Angular
 
 Essa é a parte do meu projeto que remete ao back-end, uma API feita usando Java com Spring Boot
 
@@ -12,7 +12,7 @@ Para iniciar o servidor da API, vá em "src/main/java/com/agenda/back-end/BackEn
 
 ## URLs para requisições
 
-# GET:
+### GET:
 
 Pegar todos os contatos:
 ```bash
@@ -29,19 +29,19 @@ Pegar os contatos pelo nome (para barra de pesquisa):
 http://localhost:8282/contato/pegarContatoPorNome[NOME_AQUI]
 ```
 
-# POST
+### POST
 Enviar um usuário para o banco (enviar o body com json):
 ```bash
 http://localhost:8282/contato
 ```
 
-# PUT
+### PUT
 Editar um usuário referenciando ele pelo id:
 ```bash
 http://localhost:8282/contato/editarContato/[ID_AQUI]
 ```
 
-# DELETE
+### DELETE
 Deletar um usuário referenciando ele pelo id:
 ```bash
 http://localhost:8282/contato/deletarContato/[ID_AQUI]
