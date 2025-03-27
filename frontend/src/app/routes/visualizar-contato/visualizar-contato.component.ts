@@ -1,11 +1,16 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { AtualizarContatosService } from '../../services/atualizar-contatos.service';
 import { Title } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-visualizar-contato',
-  imports: [],
+  imports: [
+    CommonModule,
+    RouterLink,
+    RouterLinkActive
+  ],
   templateUrl: './visualizar-contato.component.html',
   styleUrl: './visualizar-contato.component.css'
 })
@@ -20,7 +25,8 @@ export class VisualizarContatoComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private contatosService: AtualizarContatosService,
-    private titleService: Title
+    private titleService: Title,
+    private routerService: Router
   ) {
     this.nomeContato = '';
     this.emailContato = '';
@@ -31,8 +37,14 @@ export class VisualizarContatoComponent implements OnInit {
 
   // chamando módulo para executar comandos na montagem do componente
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.buscarContatoPorId(this.id);
+    const idParam = this.route.snapshot.paramMap.get('id');
+    this.id = idParam ? Number(idParam) : 0;
+
+    if (this.id !== null) {
+      this.buscarContatoPorId(this.id);
+    } else {
+      console.error("Id inválido ou não fornecido na URL");
+    }
   }
 
   // buscando o contato pelo id
@@ -48,6 +60,17 @@ export class VisualizarContatoComponent implements OnInit {
       this.obsContato = this.contatoSelecionado.Obs;
     } else {
       console.error (`Contato com o id: ${id} não foi encontrado.`)
+    }
+  }
+
+  deletarContato(id:number):void {
+    if(id !== null) {
+      if(confirm("Tem certeza que deseja deletar esse contato?")) {
+        // deleta o contato
+        this.contatosService.deleteContato(id);
+  
+        this.routerService.navigate(["/"])
+      }
     }
   }
 }

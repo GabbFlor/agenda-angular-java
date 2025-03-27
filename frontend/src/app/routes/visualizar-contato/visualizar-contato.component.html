@@ -24,19 +24,13 @@
             </div>
 
             <div class="div-btns">
-                <button class="btn deletar">Deletar</button>
-                <button class="btn editar">Editar</button>
+                <!-- verifica se o id não é NULL antes de passar, para evitar problemas com o TS (essa bomba) -->
+                <button type="button" class="btn deletar" (click)='id !== null && deletarContato(id)'>Deletar</button>
+                <a [routerLink]="['/editar-contato/', id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn editar">Editar</a>
             </div>
         </form>
     } @else {
         <h1 style="color: red;">O id: "{{ id }}" não foi encontrado.</h1>
     }
-
-    <!-- <ul>
-            <li>{{ nomeContato }}</li>
-            <li>{{ emailContato }}</li>
-            <li>{{ telefoneContato }}</li>
-            <li>{{ obsContato }}</li>
-        </ul> -->
     
 </main>
