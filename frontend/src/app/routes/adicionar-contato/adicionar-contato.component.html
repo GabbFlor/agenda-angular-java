@@ -1,0 +1,50 @@
+<main>
+    <form #contatoForm="ngForm" class="form-add-contato" (ngSubmit)="enviarFormulario(contatoForm)">
+        <h1>Adicionar contato</h1>
+
+        <div>
+            <label for="nome">Nome:</label>
+            <input 
+                type="text" 
+                required
+                [(ngModel)]="contatoDetails.Nome" 
+                [ngModelOptions]="{standalone: true}"
+            >
+        </div>
+
+        <div>
+            <label for="email">Email:</label>
+            <input 
+                type="email" 
+                [(ngModel)]="contatoDetails.Email" 
+                [ngModelOptions]="{standalone: true}"
+                required
+            >
+        </div>
+
+        <div>
+            <label for="tell">Telefone:</label>
+            <input 
+                type="tel" 
+                [(ngModel)]="contatoDetails.Telefone" 
+                [ngModelOptions]="{standalone: true}"
+                required
+                >
+        </div>
+
+        <div>
+            <label for="obs">Observação:</label>
+            <textarea 
+                name="obs" 
+                [(ngModel)]="contatoDetails.Obs" 
+                [ngModelOptions]="{standalone: true}"
+                required
+            ></textarea>
+        </div>
+
+        <div class="div-btns">
+            <a routerLink="/" routerLinkActive="active" ariaCurrentWhenActive="page" class="btn voltar">Voltar</a>
+            <button class="btn adicionar" type="submit">Adicionar</button>
+        </div>
+    </form>
+</main>
