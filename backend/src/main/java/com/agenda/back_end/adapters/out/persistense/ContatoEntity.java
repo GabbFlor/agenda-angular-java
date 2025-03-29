@@ -16,15 +16,18 @@ public class ContatoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "Nome", nullable = false)
+    @Column(name = "Nome", nullable = false, length = 50)
     private String nome;
 
-    @Column(name = "Email", nullable = false)
+    @Column(name = "Email", nullable = false, unique = true, length = 75)
     private String email;
 
-    @Column(name = "Telefone", nullable = false)
+    @Column(name = "Telefone", nullable = false, unique = true, length = 12)
     private String telefone;
 
-    @Column(name = "Obs", nullable = false)
+//    Lob significa que é uma grande quantidade de dados (Texto)
+    @Lob
+//    columnDefinition define o tipo da coluna como TEXT
+    @Column(name = "Obs", nullable = true, columnDefinition = "TEXT")
     private String obs;
 }
