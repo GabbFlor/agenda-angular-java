@@ -31,7 +31,7 @@ public class ContatoController {
         }
     }
 
-    @GetMapping("/pegarTodosOsContatos")
+    @GetMapping()
     public ResponseEntity<List<Contato>> pegarTodosOsContatos() {
         try {
             List<Contato> contatoList = contatoUseCases.GetAllContatos();
@@ -46,7 +46,7 @@ public class ContatoController {
         }
     }
 
-    @GetMapping("/pegarContatoPorId/{id}")
+    @GetMapping("/pegarPorId/{id}")
     public ResponseEntity<?> PegarContatoPorId (@PathVariable(value = "id") Long id) {
         try {
             Contato contato = contatoUseCases.GetContatoPorID(id);
@@ -62,7 +62,7 @@ public class ContatoController {
         }
     }
 
-    @GetMapping("/pegarContatoPorNome/{nome}")
+    @GetMapping("/pegarPorNome/{nome}")
     public ResponseEntity<List<Contato>> PegarContatoPorNome (@PathVariable(value = "nome") String Nome) {
         try {
             List<Contato> contatoList = contatoUseCases.GetContatoPorNome(Nome);
@@ -77,7 +77,7 @@ public class ContatoController {
         }
     }
 
-    @PutMapping("/editarContato/{id}")
+    @PutMapping("/editar/{id}")
     public ResponseEntity<?> EditarContatoPorID (@RequestBody Contato contatoDetails, @PathVariable(value = "id") Long id) {
         try {
             Contato contato = contatoUseCases.EditarContato(contatoDetails, id);
