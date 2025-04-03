@@ -27,19 +27,26 @@ export class AdicionarContatoComponent {
 
   // usa a interface de Contato que criei para seguir o protótipo, tipo java.
   contatoDetails: Contato = {
-    id: 0,
-    Nome: "",
-    Email: "",
-    Telefone: "",
-    Obs: ""
+    nome: "",
+    email: "",
+    telefone: "",
+    obs: ""
   }
 
-  enviarFormulario(form: any):void {
+  enviarFormulario(form: any) {
     if (form.valid) {
-      this.contatosService.addContato(this.contatoDetails);
+      this.contatosService.addContato(this.contatoDetails).subscribe({
+        next: (dados) => {
+          console.log(`Contato adicionar com sucesso: ${dados}`)
+        },
+        error: (erro) => {
+          console.error(`Erro ao adicionar o contato: ${erro}`)
+        }
+      })
     }
 
-    if(confirm(`Usuário "${this.contatoDetails.Nome}" foi adicionado com sucesso.`)) {
+    // pausa para mandar o usuário ara a Home
+    if(confirm(`Usuário "${this.contatoDetails.nome}" foi adicionado com sucesso.`)) {
       this.router.navigate(["/"])
     }
   }

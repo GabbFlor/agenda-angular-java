@@ -7,7 +7,7 @@
             <input 
                 type="text" 
                 required
-                [(ngModel)]="contatoDetailsEdit.Nome" 
+                [(ngModel)]="contatoDetailsEdit.nome"
                 [ngModelOptions]="{standalone: true}"
             >
         </div>
@@ -16,7 +16,7 @@
             <label for="email">Email:</label>
             <input 
                 type="email" 
-                [(ngModel)]="contatoDetailsEdit.Email" 
+                [(ngModel)]="contatoDetailsEdit.email" 
                 [ngModelOptions]="{standalone: true}"
                 required
             >
@@ -26,7 +26,7 @@
             <label for="tell">Telefone:</label>
             <input 
                 type="tel" 
-                [(ngModel)]="contatoDetailsEdit.Telefone" 
+                [(ngModel)]="contatoDetailsEdit.telefone" 
                 [ngModelOptions]="{standalone: true}"
                 required
                 >
@@ -36,7 +36,7 @@
             <label for="obs">Observação:</label>
             <textarea 
                 name="obs" 
-                [(ngModel)]="contatoDetailsEdit.Obs" 
+                [(ngModel)]="contatoDetailsEdit.obs" 
                 [ngModelOptions]="{standalone: true}"
                 required
             ></textarea>

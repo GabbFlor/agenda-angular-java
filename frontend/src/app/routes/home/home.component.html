@@ -15,10 +15,10 @@
         <tbody>
             @for (contato of contatos; track contato.id) {
                 <tr>
-                    <td>{{ contato.Nome }}</td>
-                    <td>{{ contato.Email }}</td>
-                    <td>{{ contato.Telefone }}</td>
-                    <td>{{ contato.Obs }}</td>
+                    <td>{{ contato.nome }}</td>
+                    <td>{{ contato.email }}</td>
+                    <td>{{ contato.telefone }}</td>
+                    <td>{{ contato.obs }}</td>
                     <td class="btn-td">
                         <a [routerLink]="['/visualizar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn visualizar">Visualizar</a>
                         <a [routerLink]="['/editar-contato/', contato.id]" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn editar">Editar</a>

@@ -49,18 +49,20 @@ export class VisualizarContatoComponent implements OnInit {
 
   // buscando o contato pelo id
   buscarContatoPorId(id:number):void {
-    this.contatoSelecionado = this.contatosService.getContatoPorId(id);
+    this.contatosService.getContatoPorId(id).subscribe({
+      next: (dados) => {
+        this.contatoSelecionado = dados;
+        console.log("Dados recuperados com sucesso!")
 
-    if (this.contatoSelecionado) {
-      console.log("Contato recuperado com sucesso");
-
-      this.nomeContato = this.contatoSelecionado.Nome;
-      this.emailContato = this.contatoSelecionado.Email;
-      this.telefoneContato = this.contatoSelecionado.Telefone;
-      this.obsContato = this.contatoSelecionado.Obs;
-    } else {
-      console.error (`Contato com o id: ${id} não foi encontrado.`)
-    }
+        this.nomeContato = this.contatoSelecionado.nome;
+        this.emailContato = this.contatoSelecionado.email;
+        this.telefoneContato = this.contatoSelecionado.telefone;
+        this.obsContato = this.contatoSelecionado.obs;
+      },
+      error: (erro) => {
+        console.error(`Erro ao recuperar contato: ${erro}`)
+      }
+    })
   }
 
   deletarContato(id:number):void {

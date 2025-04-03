@@ -1,11 +1,19 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AtualizarContatosService {
+  // rota da api
+  private urlAPI = "http://localhost:8282/contato";
 
-  constructor() { }
+  constructor(private http: HttpClient) {}
+
+  getContatos(): Observable<any[]> {
+    return this.http.get<any[]>(this.urlAPI);
+  }
 
   contatos = [
     { id: 1, Nome: "Gabriel Florindo", Email: "gabrielflorindoduarte@gmail.com", Telefone: "11970441052", Obs: "Um bom dev (talvez)." },
@@ -22,41 +30,25 @@ export class AtualizarContatosService {
 
   // método para procurar usuário pelo seu id
   getContatoPorId(id:number) {
-    return this.contatos.find(contato => contato.id == id);
-  }
-
-  // retorna uma unidade a mais do maior id da array "contatos" (trabalha em conjunto com a função "addContato")
-  getIdDoContato(): number {
-    // verifica se a lista ta vazia, se sim, retorna id 1
-    if (this.contatos.length == 0) {
-      return 1;
-    }
-
-    // pega o maior id da lista e retorna ele+1 (semelhante ao AUTO INCREMENT do banco de dados)
-    return Math.max(...this.contatos.map(c => c.id)) + 1;
+    return this.http.get<any>(this.urlAPI + `/pegarPorId/${id}`);
   }
 
   // metodo para adicionar um novo usuário
   addContato(contato: any) {
-    contato.id = this.getIdDoContato();
-    this.contatos.push(contato);
+    return this.http.post(this.urlAPI, contato);
   }
 
   // método para deletar um contato
   deleteContato(idContato:number) {
     // filtra a lista deixando só os contatos que não tem o id igual ao id contato
-    this.contatos = this.contatos.filter(contato => contato.id !== idContato)
+
+    return this.http.delete<any>(this.urlAPI + `/deletarContato/${idContato}`)
+
+    // this.contatos = this.contatos.filter(contato => contato.id !== idContato)
   }
 
   // método para editar um contato
   editarContato(idContato:number, novosDados:any) {
-    let contato = this.contatos.find(contato => contato.id === idContato);
-
-    if(contato) {
-      contato.Nome = novosDados.Nome;
-      contato.Email = novosDados.Email;
-      contato.Telefone = novosDados.Telefone;
-      contato.Obs = novosDados.Obs;
-    }
+    return this.http.put(this.urlAPI+`/editar/${idContato}`, novosDados);
   }
 }

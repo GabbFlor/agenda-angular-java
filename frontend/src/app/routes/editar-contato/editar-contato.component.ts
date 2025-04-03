@@ -31,37 +31,46 @@ export class EditarContatoComponent implements OnInit {
   }
 
   contatoDetailsEdit: Contato = {
-    id: 0,
-    Nome: "",
-    Email: "",
-    Telefone: "",
-    Obs: ""
+    nome: "",
+    email: "",
+    telefone: "",
+    obs: ""
   }
 
   buscarContatoPorId(id:number):void {
-    this.contatoSelecionado = this.contatosService.getContatoPorId(id);
+    this.contatosService.getContatoPorId(id).subscribe({
+      next: (dados) => {
+        this.contatoSelecionado = dados;
 
-    if (this.contatoSelecionado) {
-      this.contatoDetailsEdit.id = id;
-      this.contatoDetailsEdit.Nome = this.contatoSelecionado.Nome;
-      this.contatoDetailsEdit.Email = this.contatoSelecionado.Email;
-      this.contatoDetailsEdit.Telefone = this.contatoSelecionado.Telefone;
-      this.contatoDetailsEdit.Obs = this.contatoSelecionado.Obs;
-    }
+        this.contatoDetailsEdit.nome = this.contatoSelecionado.nome;
+        this.contatoDetailsEdit.email = this.contatoSelecionado.email;
+        this.contatoDetailsEdit.telefone = this.contatoSelecionado.telefone;
+        this.contatoDetailsEdit.obs = this.contatoSelecionado.obs;
+      },
+      error: (erro) => {
+        console.error(`Erro ao recuperar contato: ${erro}`)
+      }
+    })
   }
 
   ngOnInit(): void {
     this.id = Number(this.activatedRoute.snapshot.paramMap.get('id'))
+    // buscar as informações do id
     this.buscarContatoPorId(this.id);
   }
 
   editarUsuario(form:any) {
     if(form.valid && this.id !== null) {
-      this.contatosService.editarContato(this.id, this.contatoDetailsEdit)
-
-      if(confirm(`Usuário: "${this.contatoDetailsEdit.Nome}" foi editado com sucesso!`)) {
-        this.router.navigate(["/"]);
-      }
+      this.contatosService.editarContato(this.id, this.contatoDetailsEdit).subscribe({
+        next: (dados) => {
+          if(confirm(`Usuário: "${this.contatoDetailsEdit.nome}" foi editado com sucesso!`)) {
+            this.router.navigate(["/"]);
+          }
+        },
+        error: (erro) => {
+          console.error(`Erro ao editar o contato: ${erro}`)
+        }
+      })
     } else {
       console.error(`Id : "${this.id}" é inválido.`);
     }
