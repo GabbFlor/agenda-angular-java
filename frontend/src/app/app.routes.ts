@@ -3,6 +3,7 @@ import { HomeComponent } from './routes/home/home.component';
 import { EditarContatoComponent } from './routes/editar-contato/editar-contato.component';
 import { VisualizarContatoComponent } from './routes/visualizar-contato/visualizar-contato.component';
 import { AdicionarContatoComponent } from './routes/adicionar-contato/adicionar-contato.component';
+import { PesquisaComponent } from './routes/pesquisa/pesquisa.component';
 
 export const routes: Routes = [
     {
@@ -20,5 +21,9 @@ export const routes: Routes = [
     {
         path: "adicionar-contato",
         component: AdicionarContatoComponent
+    },
+    { 
+        path: "pesquisa/:consulta",
+        component: PesquisaComponent
     }
 ];
